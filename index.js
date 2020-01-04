@@ -103,14 +103,15 @@ app.post('/',
 app.post("/sign-up", function (req, response) {
   models.user.create({ username: req.body.username, password: encryptionPassword(req.body.password)})
     .then(function (user) {
-      response.send("Welcome New User");
+      response.redirect('/');
+      
     });
 });
 
 app.post('/create_artist', function (req, response){
   models.create_artist.create({ name: req.body.name, dob: req.body.dob})
   .then(function(artist){
-    response.send(artist);
+    response.send("Congrats You added a new Artist!");
   })
 })
 
